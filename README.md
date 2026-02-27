@@ -37,7 +37,7 @@ Sigue estos pasos para levantar el proyecto localmente.
 1. **Clonar e instalar dependencias:**
 
 ```bash
-git clone <url-del-repositorio>
+git clone https://github.com/JUANRYC/gestion_clientes.git
 cd dts-test
 composer install
 ```
