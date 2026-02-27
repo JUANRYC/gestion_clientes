@@ -14,5 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return redirect()->route('customers.index');
+})->name('home');
+
+Route::get('/customers', function () {
+    return view('customers.index');
+})->name('customers.index');
+
+Route::get('/orders', function () {
+    return view('orders.index');
+})->name('orders.index');
