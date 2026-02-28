@@ -7,7 +7,7 @@
     </div>
     <div class="col-md-4 text-end">
         <button class="btn btn-success" onclick="abrirModal()">
-            <i class="bi bi-plus-circle"></i> Nuevo Cliente
+            <i class="bi bi-plus-circle"></i> Nuevo Cliente 
         </button>
     </div>
 </div>

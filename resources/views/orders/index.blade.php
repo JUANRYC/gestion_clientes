@@ -3,11 +3,11 @@
 @section('content')
 <div class="row mb-3">
     <div class="col-md-8">
-        <h2>Orders</h2>
+        <h2>Pedidos</h2>
     </div>
     <div class="col-md-4 text-end">
         <button class="btn btn-success" id="addOrderBtn">
-            <i class="bi bi-plus-circle"></i> Add Order
+            <i class="bi bi-plus-circle"></i> Agregar pedido
         </button>
     </div>
 </div>
@@ -26,16 +26,16 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Order #</th>
-                        <th>Customer Name</th>
-                        <th>Total Amount</th>
-                        <th>Status</th>
-                        <th>Actions</th>
+                        <th>Pedido #</th>
+                        <th>Nombre Cliente</th>
+                        <th>Monto Total</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody id="ordersTableBody">
                     <tr id="loadingRow">
-                        <td colspan="6" class="text-center">Loading orders...</td>
+                        <td colspan="6" class="text-center">Loading pedidos...</td>
                     </tr>
                 </tbody>
             </table>
@@ -50,41 +50,41 @@
             <form id="orderForm">
                 @csrf {{-- Aunque no se usa directamente en JS, lo dejamos por claridad --}}
                 <div class="modal-header">
-                    <h5 class="modal-title" id="orderModalLabel">Order</h5>
+                    <h5 class="modal-title" id="orderModalLabel">Pedido</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <input type="hidden" id="orderId" name="id">
                     
                     <div class="mb-3">
-                        <label for="customerId" class="form-label">Customer *</label>
+                        <label for="customerId" class="form-label">Cliente *</label>
                         <select class="form-select" id="customerId" name="customerId" required>
-                            <option value="">Select a customer...</option>
+                            <option value="">Seleccione un cliente...</option>
                         </select>
                     </div>
                     
                     <div class="mb-3">
-                        <label for="orderNumber" class="form-label">Order Number *</label>
-                        <input type="text" class="form-control" id="orderNumber" name="orderNumber" required>
-                        <div class="form-text">Will be auto-generated if left empty</div>
+                        <label for="orderNumber" class="form-label">Numero de Pedido *</label>
+                        <input type="text" class="form-control" id="orderNumber" name="orderNumber">
+                        <div class="form-text">Se generará automáticamente si se deja vacío.</div>
                     </div>
 
                     <div class="mb-3">
-                        <label for="status" class="form-label">Status *</label>
+                        <label for="status" class="form-label">Estado *</label>
                         <select class="form-select" id="status" name="status" required>
-                            <option value="CREATED">CREATED</option>
-                            <option value="PAID">PAID</option>
-                            <option value="CANCELLED">CANCELLED</option>
+                            <option value="CREATED">CREADO</option>
+                            <option value="PAID">PAGADO</option>
+                            <option value="CANCELLED">CANCELADO</option>
                         </select>
                     </div>
                     
                     <div class="mb-3">
-                        <label for="totalAmount" class="form-label">Total Amount *</label>
+                        <label for="totalAmount" class="form-label">Monto Total *</label>
                         <input type="number" step="0.01" min="0" class="form-control" id="totalAmount" name="totalAmount" required>
                     </div>
                     
                     <div class="mb-3">
-                        <label for="notes" class="form-label">Notes</label>
+                        <label for="notes" class="form-label">Notas</label>
                         <textarea class="form-control" id="notes" name="notes" rows="3"></textarea>
                     </div>
                     
@@ -118,7 +118,7 @@
         const alertMessage = document.getElementById('alertMessage');
 
         let searchTimeout;
-        const currencyFormatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
+        const currencyFormatter = new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' });
 
         // Inicialización
         document.addEventListener('DOMContentLoaded', () => {
